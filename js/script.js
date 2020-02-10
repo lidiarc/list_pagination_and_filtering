@@ -4,7 +4,7 @@ FSJS project 2 - List Filter and Pagination
 ******************************************/
    
 // Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
-
+//Objetos: https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Trabajando_con_objectos
 
 /*** 
    Add your global variables that store the DOM elements you will 
@@ -39,7 +39,9 @@ person.first_name = "Andrew" --> ok
 //console.log('List length: ' + studentList2.length);
 
 //variable to store the student list item elements in the student list.
-const studentList= document.getElementsByClassName('.student-item cf');
+//const studentList = document.getElementsByClassName('li.student-item cf');
+//const studentList = document.querySelectorAll('li.student-list');
+const studentList = document.querySelectorAll('li.student-item');
 console.log('Student List: ' + studentList);
 console.log('List length: ' + studentList.length);
 
@@ -101,7 +103,7 @@ const showPage = (list, page) => {
   for (let i = 0; i <= list.length; i+=1){
     console.log('List length: ' + list.length);
     console.log('i: ' + i);
-    if(i >= startIndex && i < endIndex){
+    if(i >= startIndex && i <= endIndex){
       studentList[i].style.display = '';
       console.log('i: ' + i);
       //newPageList.push[i];
@@ -210,16 +212,6 @@ https://teamtreehouse.com/library/using-let-with-for-loops-2
   </body>
 </html>
 */
-
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
-/*** 
-   Create the `appendPageLinks function` to generate, append, and add 
-   functionality to the pagination buttons.
-***/
-
-
 
 
 
