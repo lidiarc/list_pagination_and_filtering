@@ -4,12 +4,7 @@ FSJS project 2 - List Filter and Pagination
 ******************************************/
    
 // Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
-<<<<<<< HEAD
 //Objetos: https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Trabajando_con_objectos
-=======
-
-//prueba desde casa
->>>>>>> 9bdedd295a9a1395635007c22433619af5e2a1b4
 
 /*** 
    Add your global variables that store the DOM elements you will 
@@ -108,14 +103,14 @@ const showPage = (list, page) => {
   for (let i = 0; i <= list.length; i+=1){
     console.log('List length: ' + list.length);
     console.log('i: ' + i);
-    if(i >= startIndex && i <= endIndex){
+    if(i >= startIndex && i < endIndex){
       studentList[i].style.display = '';
       console.log('i: ' + i);
       //newPageList.push[i];
       //alert(newPageList[i] + 'hola');
-    } else {
+    } /*else {
       studentList[i].style.display = 'none';
-    }
+    }*/
   }
 }
 
@@ -125,20 +120,21 @@ showPage(studentList,1);
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
-/*
+
 const appendPageLinks = (list) => {
 
 //1. Determine how many pages are needed for the list by dividing the
 //total number of list items by the max number of items per page
 
-  const neededPages = list.length / numItemsPage;
+  const neededPages = Math.ceil(list.length / numItemsPage);
+  console.log('neededPages' +  neededPages);
 
 //2. Create a div, give it the “pagination” class, and append it to the .page div
 
   let parentDiv = document.querySelector('.page');
   let newDiv = document.createElement('div');
-  div.className = 'pagination';
-  div.appendChild(newDiv);
+  newDiv.className = 'pagination';
+  parentDiv.appendChild(newDiv);
 
 //3. Add a ul to the “pagination” div to store the pagination links
 
@@ -151,6 +147,7 @@ const appendPageLinks = (list) => {
     let li = document.createElement('li');
     li.class = ('page-link');
     li.value = i;
+    ulPagination.appendChild(li);
 
 //5. Add an event listener to each a tag. When they are clicked
 //call the showPage function to display the appropriate page
@@ -176,10 +173,10 @@ const appendPageLinks = (list) => {
     }
   }
 }
-*/
 
 
-//appendPageLinks(studentList);
+
+appendPageLinks(studentList);
 
 /* IMPRIMIR DATOS:
 https://teamtreehouse.com/library/defining-a-variable-with-let-2
