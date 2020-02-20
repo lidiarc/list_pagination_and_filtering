@@ -143,7 +143,7 @@ const appendPageLinks = (list) => {
 
 //4. for every page, add li and a tags with the page number text
 
-  for (let i=0; i <= neededPages; i++){
+  for (let i=0; i < neededPages; i++){
     let li = document.createElement('li');
     let a = document.createElement('a');
     li.class = ('page-link');
