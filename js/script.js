@@ -145,14 +145,17 @@ const appendPageLinks = (list) => {
 
   for (let i=0; i <= neededPages; i++){
     let li = document.createElement('li');
+    let a = document.createElement('a');
     li.class = ('page-link');
     li.value = i;
+    a.textContent = i + 1;
     ulPagination.appendChild(li);
+    li.appendChild(a);
 
 //5. Add an event listener to each a tag. When they are clicked
 //call the showPage function to display the appropriate page
 
-    li.addEventListener('click', () => {
+    a.addEventListener('click', () => {
       showPage(studentList, i);
     });
   }
