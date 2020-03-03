@@ -99,18 +99,15 @@ const showPage = (list, page) => {
   //-- && the list item index is <= the index of the last item
   //that should be shown on the page, show it
   
-  //for (let i = 0; i < list.length; i+=1){
-  for (let i = 0; i <= list.length; i+=1){
-    console.log('List length: ' + list.length);
-    console.log('i: ' + i);
+  for (let i = 0; i < list.length; i+=1){
     if(i >= startIndex && i < endIndex){
-      studentList[i].style.display = '';
-      console.log('i: ' + i);
-      //newPageList.push[i];
-      //alert(newPageList[i] + 'hola');
-    } /*else {
+      studentList[i].style.display = 'show';
+      console.log('List length: ' + list.length);
+      console.log('i usuarios activos: ' + i);
+    } else {
       studentList[i].style.display = 'none';
-    }*/
+      console.log('entra en el ELSE: ' + i);
+    }
   }
 }
 
@@ -154,25 +151,31 @@ const appendPageLinks = (list) => {
 
 //5. Add an event listener to each a tag. When they are clicked
 //call the showPage function to display the appropriate page
-
-    a.addEventListener('click', () => {
-      showPage(studentList, i);
-    });
+    for (let x=0; x < i; x++){
+      a.addEventListener('click', () => {
+        showPage(studentList, i);
+        //showPage(studentList, a);
+        //showPage(studentList, 1);
+        console.log('algún numero pulsado');
+        //showPage(list, i);
+      });
+    }
   }
 
 //6. Loop over pagination links to remove active class from all links
 
   var pageLinks = document.querySelectorAll('.page-link');
 
-  for (var i = 0; i < pageLinks.length; i++) {
-    pageLinks[i].classList.remove('active');
+  for (let p = 0; p < pageLinks.length; p++) {
+    console.log('pageLinks: ' + pageLinks.length);
+    pageLinks[p].classList.remove('active');
 
 
 //7. Add the active class to the link that was just clicked.
 //You can identify that clicked link using event.target
 
-    if (pageLinks[i] === event.target){
-    pageLinks[i].classList.add('active');
+    if (pageLinks[p] === event.target){
+    pageLinks[p].classList.add('active');
     }
   }
 }
