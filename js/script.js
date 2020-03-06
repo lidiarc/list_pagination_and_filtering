@@ -101,7 +101,8 @@ const showPage = (list, page) => {
   
   for (let i = 0; i < list.length; i+=1){
     if(i >= startIndex && i < endIndex){
-      studentList[i].style.display = 'show';
+      //studentList[i].style.display = 'show';
+      studentList[i].style.display = '';
       //console.log('List length: ' + list.length);
       console.log('i usuarios activos: ' + i);
     } else {
@@ -111,7 +112,7 @@ const showPage = (list, page) => {
   }
 }
 
-//showPage(studentList,1);
+showPage(studentList,1);
 
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
@@ -130,6 +131,7 @@ const appendPageLinks = (list) => {
 
   let parentDiv = document.querySelector('.page');
   let newDiv = document.createElement('div');
+  
   newDiv.className = 'pagination';
   parentDiv.appendChild(newDiv);
 
@@ -144,10 +146,14 @@ const appendPageLinks = (list) => {
   for (let i=1; i <= neededPages; i++){
     let li = document.createElement('li');
     let a = document.createElement('a');
+    
     li.className = ('page-link');
     li.value = i;
+    
     //a.textContent = i + 1;
     a.textContent = i;
+    //a.href = '#';
+
     ulPagination.appendChild(li);
     li.appendChild(a);
     console.log('i ' + i);
@@ -165,21 +171,34 @@ const appendPageLinks = (list) => {
         //showPage(list, i);
       });
     }*/
+    /*
     a.addEventListener('click', () => {
-      /*
-      //7. Add the active class to the link that was just clicked.
-      //You can identify that clicked link using event.target
-      if (a === event.target){
-        a.classList.add('active');
-      } else {
-        a.classList.remove('active');
-      }
-      */
-      
       showPage(studentList, i);
       console.log('i click' + i);
       console.log('algún numero pulsado');
-    });
+    });*/
+    /*
+    a.addEventListener('click', () => {
+      const pageLinks = document.getElementsByClassName('a');
+      for (let x=0; x <= neededPages; x++){
+        pageLinks[i].className = '';
+      }
+      let e = event.target.className = 'active';
+
+      showPage(studentList, event.target.textContent);
+    });*/
+    a.addEventListener('click', () => {                    
+      const buttonClicked = event.target;
+      const buttonNumber = a.textContent;
+      const pageLinks = document.getElementsByTagName('a');
+
+      for (let p = 0; p < pageLinks.length; p++) {
+        pageLinks[p].classList.remove('active');
+      }
+      buttonClicked.classList.add('active');
+
+      showPage(studentList, buttonNumber);                                            
+   });
   }
   /*
   //6. Loop over pagination links to remove active class from all links
@@ -190,11 +209,18 @@ const appendPageLinks = (list) => {
         pageLinks[p].classList.remove('active');
       }
   */
+ /*
+      //7. Add the active class to the link that was just clicked.
+      //You can identify that clicked link using event.target
+      if (a === event.target){
+        a.classList.add('active');
+      } else {
+        a.classList.remove('active');
+      }
+      */
   
 }
 
-
-showPage(studentList,1);
 appendPageLinks(studentList);
 
 /* IMPRIMIR DATOS:
