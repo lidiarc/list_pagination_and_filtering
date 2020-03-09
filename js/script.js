@@ -62,6 +62,10 @@ const appendPageLinks = (list) => {
     ulPagination.appendChild(li);
     li.appendChild(a);
 
+    if(a.textContent === '1'){
+      a.classList.add('active');
+    }
+
     //5. Add an event listener to each a tag. When they are clicked
     //call the showPage function to display the appropriate page
     a.addEventListener('click', () => {                  
